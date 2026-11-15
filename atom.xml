@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>tagaholic.me Schema</title>
-  <subtitle>A website that describes cldwalker's ontology based on Schema.org</subtitle>
+  <subtitle>cldwalker's ontology based on Schema.org</subtitle>
   <link href="https://tagaholic.me/schema/atom.xml" rel="self"/>
   <link href="https://tagaholic.me/schema/"/>
-  <updated>2026-11-15T16:51:34+00:00</updated>
+  <updated>2026-11-15T23:31:11+00:00</updated>
   <id>https://tagaholic.me/schema/</id>
   <author>
     <name>cldwalker</name>
@@ -14,9 +14,9 @@
     <link href="https://tagaholic.me/schema/ComputerConcept.html"/>
     <title>ComputerConcept</title>
     <updated>2026-11-15T23:59:59+00:00</updated>
-    <content type="html"><![CDATA[<div><h2 id="properties">Properties</h2><ul>
-<li><strong>description</strong>: Umbrella class for any computer concepts</li>
-<li><strong>url</strong>: <a href="ComputerConcept.html">ComputerConcept.html</a></li>
+    <content type="html"><![CDATA[<div><p class="breadcrumbs"><a class="external" target="_blank" rel="noopener" href="https://schema.org/Thing">Thing</a> &gt; <a class="external" target="_blank" rel="noopener" href="https://schema.org/Intangible">Intangible</a> &gt; ComputerConcept</p><h2 id="properties">Properties</h2><ul>
+<li><strong><a class="external" target="_blank" rel="noopener" href="https://schema.org/description">description</a></strong>: Umbrella class for any computer concepts</li>
+<li><strong><a class="external" target="_blank" rel="noopener" href="https://schema.org/url">url</a></strong>: <a href="ComputerConcept.html">ComputerConcept.html</a></li>
 </ul><h2 id="extends">Extends</h2><ul>
 <li><a class="external" target="_blank" rel="noopener" href="https://schema.org/Intangible">Intangible</a></li>
 </ul></div>]]></content>
@@ -26,8 +26,8 @@
     <link href="https://tagaholic.me/schema/Egame.html"/>
     <title>Egame</title>
     <updated>2026-11-15T23:59:59+00:00</updated>
-    <content type="html"><![CDATA[<div><h2 id="properties">Properties</h2><ul>
-<li><strong>url</strong>: <a href="Egame.html">Egame.html</a></li>
+    <content type="html"><![CDATA[<div><p class="breadcrumbs"><a class="external" target="_blank" rel="noopener" href="https://schema.org/Thing">Thing</a> &gt; <a class="external" target="_blank" rel="noopener" href="https://schema.org/CreativeWork">CreativeWork</a> &gt; <a class="external" target="_blank" rel="noopener" href="https://schema.org/Game">Game</a> &gt; Egame</p><h2 id="properties">Properties</h2><ul>
+<li><strong><a class="external" target="_blank" rel="noopener" href="https://schema.org/url">url</a></strong>: <a href="Egame.html">Egame.html</a></li>
 </ul><h2 id="extends">Extends</h2><ul>
 <li><a class="external" target="_blank" rel="noopener" href="https://schema.org/Game">Game</a></li>
 </ul></div>]]></content>
@@ -37,9 +37,9 @@
     <link href="https://tagaholic.me/schema/LargeLanguageModel.html"/>
     <title>LargeLanguageModel</title>
     <updated>2026-11-15T23:59:59+00:00</updated>
-    <content type="html"><![CDATA[<div><h2 id="properties">Properties</h2><ul>
-<li><strong>url</strong>: <a href="LargeLanguageModel.html">LargeLanguageModel.html</a></li>
-<li><strong>sameAs</strong>: <a class="external" target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Large_language_model">https://en.wikipedia.org/wiki/Large_language_model</a></li>
+    <content type="html"><![CDATA[<div><p class="breadcrumbs"><a class="external" target="_blank" rel="noopener" href="https://schema.org/Thing">Thing</a> &gt; <a class="external" target="_blank" rel="noopener" href="https://schema.org/Intangible">Intangible</a> &gt; <a href="ComputerConcept.html">ComputerConcept</a> &gt; LargeLanguageModel</p><h2 id="properties">Properties</h2><ul>
+<li><strong><a class="external" target="_blank" rel="noopener" href="https://schema.org/url">url</a></strong>: <a href="LargeLanguageModel.html">LargeLanguageModel.html</a></li>
+<li><strong><a class="external" target="_blank" rel="noopener" href="https://schema.org/sameAs">sameAs</a></strong>: <a class="external" target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Large_language_model">https://en.wikipedia.org/wiki/Large_language_model</a></li>
 </ul><h2 id="extends">Extends</h2><ul>
 <li><a href="ComputerConcept.html">ComputerConcept</a></li>
 </ul></div>]]></content>
@@ -50,8 +50,8 @@
     <title>referrerURL</title>
     <updated>2026-11-15T23:59:59+00:00</updated>
     <content type="html"><![CDATA[<div><h2 id="properties">Properties</h2><ul>
-<li><strong>description</strong>: Url or description for where this node came from</li>
-<li><strong>url</strong>: <a href="referrerURL.html">referrerURL.html</a></li>
+<li><strong><a class="external" target="_blank" rel="noopener" href="https://schema.org/description">description</a></strong>: Url or description for where this node came from</li>
+<li><strong><a class="external" target="_blank" rel="noopener" href="https://schema.org/url">url</a></strong>: <a href="referrerURL.html">referrerURL.html</a></li>
 </ul></div>]]></content>
   </entry>
 </feed>
