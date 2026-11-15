@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>REPL adventures</title>
+  <subtitle>A blog about blogging quickly</subtitle>
+  <link href="https://github.com/borkdude/quickblog/atom.xml" rel="self"/>
+  <link href="https://github.com/borkdude/quickblog"/>
+  <updated>2026-11-15T16:37:38+00:00</updated>
+  <id>https://github.com/borkdude/quickblog</id>
+  <author>
+    <name>Quick Blogger</name>
+  </author>
+</feed>

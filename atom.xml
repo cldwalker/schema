@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>REPL adventures</title>
+  <subtitle>A blog about blogging quickly</subtitle>
+  <link href="https://github.com/borkdude/quickblog/atom.xml" rel="self"/>
+  <link href="https://github.com/borkdude/quickblog"/>
+  <updated>2026-11-15T16:37:38+00:00</updated>
+  <id>https://github.com/borkdude/quickblog</id>
+  <author>
+    <name>Quick Blogger</name>
+  </author>
+  <entry>
+    <id>https://github.com/borkdude/quickblog/ComputerConcept.html</id>
+    <link href="https://github.com/borkdude/quickblog/ComputerConcept.html"/>
+    <title>ComputerConcept</title>
+    <updated>2026-11-15T23:59:59+00:00</updated>
+    <content type="html"><![CDATA[<div><h2 id="properties">Properties</h2><ul>
+<li><strong>description</strong>: Umbrella class for any computer concepts</li>
+<li><strong>url</strong>: <a href="ComputerConcept.html">ComputerConcept.html</a></li>
+</ul><h2 id="extends">Extends</h2><ul>
+<li><a class="external" target="_blank" rel="noopener" href="https://schema.org/Intangible">Intangible</a></li>
+</ul></div>]]></content>
+  </entry>
+  <entry>
+    <id>https://github.com/borkdude/quickblog/Egame.html</id>
+    <link href="https://github.com/borkdude/quickblog/Egame.html"/>
+    <title>Egame</title>
+    <updated>2026-11-15T23:59:59+00:00</updated>
+    <content type="html"><![CDATA[<div><h2 id="properties">Properties</h2><ul>
+<li><strong>url</strong>: <a href="Egame.html">Egame.html</a></li>
+</ul><h2 id="extends">Extends</h2><ul>
+<li><a class="external" target="_blank" rel="noopener" href="https://schema.org/Game">Game</a></li>
+</ul></div>]]></content>
+  </entry>
+  <entry>
+    <id>https://github.com/borkdude/quickblog/LargeLanguageModel.html</id>
+    <link href="https://github.com/borkdude/quickblog/LargeLanguageModel.html"/>
+    <title>LargeLanguageModel</title>
+    <updated>2026-11-15T23:59:59+00:00</updated>
+    <content type="html"><![CDATA[<div><h2 id="properties">Properties</h2><ul>
+<li><strong>url</strong>: <a href="LargeLanguageModel.html">LargeLanguageModel.html</a></li>
+<li><strong>sameAs</strong>: <a class="external" target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Large_language_model">https://en.wikipedia.org/wiki/Large_language_model</a></li>
+</ul><h2 id="extends">Extends</h2><ul>
+<li><a href="ComputerConcept.html">ComputerConcept</a></li>
+</ul></div>]]></content>
+  </entry>
+  <entry>
+    <id>https://github.com/borkdude/quickblog/referrerURL.html</id>
+    <link href="https://github.com/borkdude/quickblog/referrerURL.html"/>
+    <title>referrerURL</title>
+    <updated>2026-11-15T23:59:59+00:00</updated>
+    <content type="html"><![CDATA[<div><h2 id="properties">Properties</h2><ul>
+<li><strong>description</strong>: Url or description for where this node came from</li>
+<li><strong>url</strong>: <a href="referrerURL.html">referrerURL.html</a></li>
+</ul></div>]]></content>
+  </entry>
+</feed>
