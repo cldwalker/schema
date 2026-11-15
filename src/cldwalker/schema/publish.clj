@@ -16,8 +16,13 @@
 
 (def quickblog-opts
   "Blog options shared by the quickblog task and the tasks in this ns"
-  {:blog-title "REPL adventures"
-   :blog-description "A blog about blogging quickly"})
+  {:blog-title "tagaholic.me Schema"
+   :blog-root "https://tagaholic.me/schema/"
+   :blog-author "cldwalker"
+   :about-link "https://tagaholic.me"
+   ;; Plain text since quickblog also puts it in meta tags and feeds.
+   ;; templates/base.html has the site header's version with a Schema.org link
+   :blog-description "A website that describes cldwalker's ontology based on Schema.org"})
 
 (defn- read-resource-edn [resource]
   (or (some-> (io/resource resource) slurp edn/read-string)
