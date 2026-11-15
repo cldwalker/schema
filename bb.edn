@@ -6,9 +6,8 @@
  :tasks
  {quickblog
   {:doc "Start blogging quickly! Run `bb quickblog help` for details."
-   :requires ([quickblog.cli :as cli]
-              [cldwalker.schema.publish :as publish])
-   :task (cli/dispatch publish/quickblog-opts)}
+   :requires ([cldwalker.schema.publish :as publish])
+   :task (publish/quickblog-cli *command-line-args*)}
 
   schema:create
   {:doc "Create a post for each class and property in tagaholic-me-index.edn, or only the given ones"

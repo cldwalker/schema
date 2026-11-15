@@ -35,12 +35,6 @@
 {% else %}
     <meta name="twitter:card" content="summary">
 {% endif %}
-{% if sharing.author %}
-    <meta name="twitter:creator" content="{{sharing.author}}">
-{% endif %}
-{% if sharing.twitter-handle %}
-    <meta name="twitter:site" content="{{sharing.twitter-handle}}">
-{% endif %}
   </head>
   <body>
 
@@ -53,9 +47,9 @@
 	  <a class="page-link" href="{{relative-path | safe}}atom.xml">
             Feed
           </a>
-	  {% if twitter-handle %}
-	  <a class="page-link" href="https://twitter.com/{{twitter-handle}}">
-            Twitter
+	  {% if bluesky-handle %}
+	  <a class="page-link" href="https://bsky.app/profile/{{bluesky-handle}}.bsky.social">
+            Bluesky
           </a>
 	  {% endif %}
 	  {% if about-link %}
@@ -66,7 +60,7 @@
           <h1 class="site-title">
             <a class="page-link" href="{{relative-path | safe}}index.html">{{blog-title}}</a>
           </h1>
-	  <p>A website that describes cldwalker's ontology based on <a class="external" target="_blank" rel="noopener" href="https://schema.org/">Schema.org</a></p>
+	  <p>{{blog-description-html|safe}}</p>
         </div>
       </div>
     </div>

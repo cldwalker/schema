@@ -17,7 +17,21 @@
                (set (map fs/file-name (fs/list-dir (fs/file dir "posts"))))))
         (is (str/includes? (slurp genre-file) "Tags: class"))
         (is (str/includes? (slurp genre-file) "<a href=\"HumanConcept.html\">HumanConcept</a>"))
+        (is (str/includes? (slurp genre-file)
+                           "Description: First property I've added. Could also be https://schema.org/genre\n"))
         (is (str/includes? (slurp (fs/file dir "posts" "referrerURL.md")) "Tags: property")))
+      (testing "class posts have breadcrumbs from Thing with only external crumbs styled external"
+        (is (str/includes? (slurp genre-file)
+                           (str "<p class=\"breadcrumbs\">"
+                                "<a class=\"external\" target=\"_blank\" rel=\"noopener\" href=\"https://schema.org/Thing\">Thing</a> &gt; "
+                                "<a class=\"external\" target=\"_blank\" rel=\"noopener\" href=\"https://schema.org/Intangible\">Intangible</a> &gt; "
+                                "<a href=\"HumanConcept.html\">HumanConcept</a> &gt; Genre</p>")))
+        (is (not (str/includes? (slurp (fs/file dir "posts" "referrerURL.md")) "breadcrumbs"))))
+      (testing "property names link to their property in an index"
+        (is (str/includes? (slurp genre-file)
+                           "<strong><a class=\"external\" target=\"_blank\" rel=\"noopener\" href=\"https://schema.org/sameAs\">sameAs</a></strong>"))
+        (is (str/includes? (slurp genre-file)
+                           "<strong><a class=\"external\" target=\"_blank\" rel=\"noopener\" href=\"https://schema.org/description\">description</a></strong>")))
       (testing "leaves existing posts unchanged"
         (spit genre-file "edited")
         (is (str/includes? (bb-task "schema:create" "--dir" (str dir) "Genre")
