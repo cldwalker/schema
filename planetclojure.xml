@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>REPL adventures</title>
-  <subtitle>A blog about blogging quickly</subtitle>
-  <link href="https://github.com/borkdude/quickblog/atom.xml" rel="self"/>
-  <link href="https://github.com/borkdude/quickblog"/>
-  <updated>2026-11-15T16:37:38+00:00</updated>
-  <id>https://github.com/borkdude/quickblog</id>
+  <title>tagaholic.me Schema</title>
+  <subtitle>A website that describes cldwalker's ontology based on Schema.org</subtitle>
+  <link href="https://tagaholic.me/schema/atom.xml" rel="self"/>
+  <link href="https://tagaholic.me/schema/"/>
+  <updated>2026-11-15T16:51:34+00:00</updated>
+  <id>https://tagaholic.me/schema/</id>
   <author>
-    <name>Quick Blogger</name>
+    <name>cldwalker</name>
   </author>
 </feed>

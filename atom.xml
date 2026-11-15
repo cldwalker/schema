@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>REPL adventures</title>
-  <subtitle>A blog about blogging quickly</subtitle>
-  <link href="https://github.com/borkdude/quickblog/atom.xml" rel="self"/>
-  <link href="https://github.com/borkdude/quickblog"/>
-  <updated>2026-11-15T16:37:38+00:00</updated>
-  <id>https://github.com/borkdude/quickblog</id>
+  <title>tagaholic.me Schema</title>
+  <subtitle>A website that describes cldwalker's ontology based on Schema.org</subtitle>
+  <link href="https://tagaholic.me/schema/atom.xml" rel="self"/>
+  <link href="https://tagaholic.me/schema/"/>
+  <updated>2026-11-15T16:51:34+00:00</updated>
+  <id>https://tagaholic.me/schema/</id>
   <author>
-    <name>Quick Blogger</name>
+    <name>cldwalker</name>
   </author>
   <entry>
-    <id>https://github.com/borkdude/quickblog/ComputerConcept.html</id>
-    <link href="https://github.com/borkdude/quickblog/ComputerConcept.html"/>
+    <id>https://tagaholic.me/schema/ComputerConcept.html</id>
+    <link href="https://tagaholic.me/schema/ComputerConcept.html"/>
     <title>ComputerConcept</title>
     <updated>2026-11-15T23:59:59+00:00</updated>
     <content type="html"><![CDATA[<div><h2 id="properties">Properties</h2><ul>
@@ -22,8 +22,8 @@
 </ul></div>]]></content>
   </entry>
   <entry>
-    <id>https://github.com/borkdude/quickblog/Egame.html</id>
-    <link href="https://github.com/borkdude/quickblog/Egame.html"/>
+    <id>https://tagaholic.me/schema/Egame.html</id>
+    <link href="https://tagaholic.me/schema/Egame.html"/>
     <title>Egame</title>
     <updated>2026-11-15T23:59:59+00:00</updated>
     <content type="html"><![CDATA[<div><h2 id="properties">Properties</h2><ul>
@@ -33,8 +33,8 @@
 </ul></div>]]></content>
   </entry>
   <entry>
-    <id>https://github.com/borkdude/quickblog/LargeLanguageModel.html</id>
-    <link href="https://github.com/borkdude/quickblog/LargeLanguageModel.html"/>
+    <id>https://tagaholic.me/schema/LargeLanguageModel.html</id>
+    <link href="https://tagaholic.me/schema/LargeLanguageModel.html"/>
     <title>LargeLanguageModel</title>
     <updated>2026-11-15T23:59:59+00:00</updated>
     <content type="html"><![CDATA[<div><h2 id="properties">Properties</h2><ul>
@@ -45,8 +45,8 @@
 </ul></div>]]></content>
   </entry>
   <entry>
-    <id>https://github.com/borkdude/quickblog/referrerURL.html</id>
-    <link href="https://github.com/borkdude/quickblog/referrerURL.html"/>
+    <id>https://tagaholic.me/schema/referrerURL.html</id>
+    <link href="https://tagaholic.me/schema/referrerURL.html"/>
     <title>referrerURL</title>
     <updated>2026-11-15T23:59:59+00:00</updated>
     <content type="html"><![CDATA[<div><h2 id="properties">Properties</h2><ul>
