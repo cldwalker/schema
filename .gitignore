@@ -1,2 +1,5 @@
 /.work
 /public
+/.cpcache
+/.clj-kondo/.cache
+/.lsp/.cache

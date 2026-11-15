@@ -1,0 +1,5 @@
+{:paths ["src" "resources"]
+ :aliases
+ {:clj-kondo
+  {:replace-deps {clj-kondo/clj-kondo {:mvn/version "2026.10.26"}}
+   :main-opts  ["-m" "clj-kondo.main"]}}}
