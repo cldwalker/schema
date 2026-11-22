@@ -1,14 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>tagaholic.me Schema</title>
+  <title>cldwalker Schema</title>
   <subtitle>cldwalker's ontology based on Schema.org</subtitle>
   <link href="https://tagaholic.me/schema/atom.xml" rel="self"/>
   <link href="https://tagaholic.me/schema/"/>
-  <updated>2026-11-15T23:31:11+00:00</updated>
+  <updated>2026-11-22T21:11:08+00:00</updated>
   <id>https://tagaholic.me/schema/</id>
   <author>
     <name>cldwalker</name>
   </author>
+  <entry>
+    <id>https://tagaholic.me/schema/HumanConcept.html</id>
+    <link href="https://tagaholic.me/schema/HumanConcept.html"/>
+    <title>HumanConcept</title>
+    <updated>2026-11-22T23:59:59+00:00</updated>
+    <content type="html"><![CDATA[<div><p class="breadcrumbs"><a class="external" target="_blank" rel="noopener" href="https://schema.org/Thing">Thing</a> &gt; <a class="external" target="_blank" rel="noopener" href="https://schema.org/Intangible">Intangible</a> &gt; HumanConcept</p><h2 id="properties">Properties</h2><ul>
+<li><strong><a class="external" target="_blank" rel="noopener" href="https://schema.org/description">description</a></strong>: Concept which primarily applies to human(s)</li>
+<li><strong><a class="external" target="_blank" rel="noopener" href="https://schema.org/url">url</a></strong>: <a href="HumanConcept.html">HumanConcept.html</a></li>
+</ul><h2 id="extends">Extends</h2><ul>
+<li><a class="external" target="_blank" rel="noopener" href="https://schema.org/Intangible">Intangible</a></li>
+</ul></div>]]></content>
+  </entry>
+  <entry>
+    <id>https://tagaholic.me/schema/meta.html</id>
+    <link href="https://tagaholic.me/schema/meta.html"/>
+    <title>meta</title>
+    <updated>2026-11-22T23:59:59+00:00</updated>
+    <content type="html"><![CDATA[<div><h2 id="properties">Properties</h2><ul>
+<li><strong><a class="external" target="_blank" rel="noopener" href="https://schema.org/description">description</a></strong>: Meta description field which usually discusses organizing thing instead of thing itself</li>
+<li><strong><a class="external" target="_blank" rel="noopener" href="https://schema.org/url">url</a></strong>: <a href="meta.html">meta.html</a></li>
+</ul></div>]]></content>
+  </entry>
   <entry>
     <id>https://tagaholic.me/schema/ComputerConcept.html</id>
     <link href="https://tagaholic.me/schema/ComputerConcept.html"/>

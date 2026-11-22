@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>tagaholic.me Schema</title>
+  <title>cldwalker Schema</title>
   <subtitle>cldwalker's ontology based on Schema.org</subtitle>
   <link href="https://tagaholic.me/schema/atom.xml" rel="self"/>
   <link href="https://tagaholic.me/schema/"/>
-  <updated>2026-11-15T23:31:11+00:00</updated>
+  <updated>2026-11-22T21:11:08+00:00</updated>
   <id>https://tagaholic.me/schema/</id>
   <author>
     <name>cldwalker</name>
