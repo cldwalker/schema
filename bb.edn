@@ -10,7 +10,7 @@
    :task (publish/quickblog-cli *command-line-args*)}
 
   schema:create
-  {:doc "Create a post for each class and property in tagaholic-me-index.edn, or only the given ones"
+  {:doc "Create a post for each class and property in tagaholic-me-index.edn, or only the given ones, and a classes post"
    :exec-fn cldwalker.schema.publish/create
    :cli cldwalker.schema.publish/task-cli}
 

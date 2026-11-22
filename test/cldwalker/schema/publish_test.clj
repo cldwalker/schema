@@ -12,8 +12,8 @@
   (fs/with-temp-dir [dir {}]
     (let [genre-file (fs/file dir "posts" "Genre.md")]
       (bb-task "schema:create" "--dir" (str dir) "Genre" "referrerURL")
-      (testing "writes a post per given class and property"
-        (is (= #{"Genre.md" "referrerURL.md"}
+      (testing "writes a post per given class and property and a classes post"
+        (is (= #{"Genre.md" "referrerURL.md" "classes.md"}
                (set (map fs/file-name (fs/list-dir (fs/file dir "posts"))))))
         (is (str/includes? (slurp genre-file) "Tags: class"))
         (is (str/includes? (slurp genre-file) "<a href=\"HumanConcept.html\">HumanConcept</a>"))
@@ -27,6 +27,15 @@
                                 "<a class=\"external\" target=\"_blank\" rel=\"noopener\" href=\"https://schema.org/Intangible\">Intangible</a> &gt; "
                                 "<a href=\"HumanConcept.html\">HumanConcept</a> &gt; Genre</p>")))
         (is (not (str/includes? (slurp (fs/file dir "posts" "referrerURL.md")) "breadcrumbs"))))
+      (testing "classes post is a preview post that counts and shows the given classes and their ancestors with only schema.org classes external"
+        (let [classes (slurp (fs/file dir "posts" "classes.md"))]
+          (is (str/includes? classes "Preview: true"))
+          (is (str/includes? classes "This ontology has 2 schema.org classes and 2 tagaholic.me classes."))
+          (is (str/includes? classes
+                             (str "<ul><li><a class=\"external\" href=\"https://schema.org/Thing\" rel=\"noopener\" target=\"_blank\">Thing</a>"
+                                  "<ul><li><a class=\"external\" href=\"https://schema.org/Intangible\" rel=\"noopener\" target=\"_blank\">Intangible</a>"
+                                  "<ul><li><a href=\"HumanConcept.html\">HumanConcept</a>"
+                                  "<ul><li><a href=\"Genre.html\">Genre</a></li></ul></li></ul></li></ul></li></ul>")))))
       (testing "property names link to their property in an index"
         (is (str/includes? (slurp genre-file)
                            "<strong><a class=\"external\" target=\"_blank\" rel=\"noopener\" href=\"https://schema.org/sameAs\">sameAs</a></strong>"))
@@ -35,7 +44,7 @@
       (testing "leaves existing posts unchanged"
         (spit genre-file "edited")
         (is (str/includes? (bb-task "schema:create" "--dir" (str dir) "Genre")
-                           "Skipped 1 posts"))
+                           "Skipped 2 posts"))
         (is (= "edited" (slurp genre-file)))))))
 
 (deftest schema-rebuild

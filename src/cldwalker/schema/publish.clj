@@ -7,20 +7,23 @@
   resources/new-post.md Selmer template. Class posts start with breadcrumbs
   of the classes they extend up to Thing. Posts have a Properties section whose
   names link to their property in either index and, for classes, an Extends
-  section. Links to schema.org or other sites are external links. `rebuild`
-  recreates posts and re-renders the whole site."
+  section. Links to schema.org or other sites are external links. When classes
+  are created, a classes.md preview post counts them and every class they
+  extend and shows them as a tree, like logseq-class-tree. `rebuild` recreates
+  posts and re-renders the whole site."
   (:require [babashka.fs :as fs]
             [cldwalker.schema.cli :as cli-util]
             [clojure.edn :as edn]
             [clojure.java.io :as io]
             [clojure.string :as str]
+            [hiccup2.core :as hiccup]
             [quickblog.api :as quickblog]
             [quickblog.cli :as quickblog-cli]))
 
 (def quickblog-opts
   "Blog options shared by the quickblog task and the tasks in this ns"
   (let [description "cldwalker's ontology based on Schema.org"]
-    {:blog-title "tagaholic.me Schema"
+    {:blog-title "cldwalker Schema"
      :blog-root "https://tagaholic.me/schema/"
      :blog-author "cldwalker"
      :about-link "https://tagaholic.me"
@@ -75,6 +78,8 @@
         (concat (:classes my-index) (:properties my-index))))
 
 (def ^:private new-post-template "new-post.md")
+
+(def ^:private classes-template "classes.md")
 
 (def ^:private property-fields
   "`:build/properties` shown in a post's Properties section, in display order.
@@ -154,8 +159,61 @@
           (recur parent-ref (conj ancestors parent-ref)))
         (map #(class-link indexes %) ancestors)))))
 
+(defn- class-parents
+  "Refs of the classes that class `ref` extends"
+  [indexes [index-k :as ref]]
+  (map #(class-ref index-k %) (:build/class-extends (class-entry indexes ref))))
+
+(defn- with-ancestors
+  "Set of class `refs` and every class they extend. Errors on an extends cycle."
+  [indexes refs]
+  (letfn [(visit [seen path ref]
+            (when (path ref)
+              (cli-util/error "Class" (second ref) "has an extends cycle"))
+            (if (seen ref)
+              seen
+              (reduce #(visit %1 (conj path ref) %2)
+                      (conj seen ref)
+                      (class-parents indexes ref))))]
+    (reduce #(visit %1 #{} %2) #{} refs)))
+
+(defn- class-hierarchy
+  "Hiccup of nested lists of class `refs`, from the root class e.g. Thing down,
+  like logseq-class-tree's outline. Classes are sorted by title and a class
+  with multiple parents is under each of them."
+  [indexes refs]
+  (let [parents (into {} (map (juxt identity #(class-parents indexes %))) refs)
+        sort-refs (fn [refs]
+                    (sort-by #(str/lower-case (:block/title (class-entry indexes %))) refs))
+        children (update-vals (reduce-kv (fn [m child ps]
+                                           (reduce #(update %1 %2 (fnil conj []) child) m ps))
+                                         {} parents)
+                              sort-refs)
+        item (fn item [ref]
+               (let [{:keys [title url external?]} (class-link indexes ref)]
+                 [:li [:a (cond-> {:href url}
+                            external? (assoc :class "external" :target "_blank" :rel "noopener"))
+                       title]
+                  (when-let [child-refs (children ref)]
+                    [:ul (map item child-refs)])]))]
+    [:ul (map item (sort-refs (filter (comp empty? parents) refs)))]))
+
+(defn- classes-post
+  "Post of `class-ks` and every class they extend"
+  [indexes class-ks]
+  (let [refs (with-ancestors indexes (map #(vector :tagaholic %) class-ks))
+        counts (frequencies (map first refs))]
+    {:type :classes
+     :template classes-template
+     :title "Classes"
+     :file "classes.md"
+     :schema-org-count (get counts :schema-org 0)
+     :tagaholic-count (get counts :tagaholic 0)
+     :tree (str (hiccup/html (class-hierarchy indexes refs)))}))
+
 (defn- ->post [indexes type [k entry]]
   (cond-> {:type type
+           :template new-post-template
            :title (:block/title entry)
            :file (str (:block/title entry) ".md")
            :tags [(name type)]
@@ -189,8 +247,9 @@
         ;; Links need every class and property, not just the selected ones
         indexes {:tagaholic index
                  :schema-org (read-resource-edn (:schema-org index-files))}]
-    (concat (map #(->post indexes :class %) classes)
-            (map #(->post indexes :property %) properties))))
+    (cond-> (concat (map #(->post indexes :class %) classes)
+                    (map #(->post indexes :property %) properties))
+      (seq classes) (concat [(classes-post indexes (keys classes))]))))
 
 (defn- site-dir [dir]
   (let [dir (fs/expand-home dir)]
@@ -213,21 +272,25 @@
 
 (defn- write-posts
   "Writes `posts` into `posts-dir` with quickblog, or only lists them when
-  `pretend`, and reports how many classes and properties that is"
+  `pretend`, and reports how many classes and properties that is and if there
+  is a classes page"
   [posts posts-dir pretend]
-  (let [template-file (str (io/file (io/resource new-post-template)))
-        counts (frequencies (map :type posts))]
+  (let [counts (frequencies (map :type posts))]
     (doseq [post posts]
       (if pretend
         (println "Would create" (str (fs/path posts-dir (:file post))))
-        (quickblog/new (assoc post :posts-dir posts-dir :template-file template-file))))
-    (println (if pretend "Would create" "Created")
-             (get counts :class 0) "classes and" (get counts :property 0) "properties in" posts-dir)))
+        (quickblog/new (assoc post
+                              :posts-dir posts-dir
+                              :template-file (str (io/file (io/resource (:template post))))))))
+    (apply println (if pretend "Would create" "Created")
+           (get counts :class 0) "classes and" (get counts :property 0) "properties"
+           (concat (when (counts :classes) ["with a classes page"])
+                   ["in" posts-dir]))))
 
 (defn create
   "Creates a quickblog post for each class and property in
-  tagaholic-me-index.edn, or only the ones in `args`. Existing posts are left
-  unchanged."
+  tagaholic-me-index.edn, or only the ones in `args`, and a classes post of
+  the classes. Existing posts are left unchanged."
   [{:keys [dir pretend args]}]
   (let [{:keys [posts-dir]} (site-opts (site-dir dir))
         {existing true new-posts false}

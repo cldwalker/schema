@@ -5,7 +5,7 @@ This website describes my ontology based off of https://schema.org/. The website
 ## Development
 
 Install [babashka](https://github.com/babashka/babashka). Most useful bb tasks:
-* `bb schema:create` - Creates posts from index EDN files
+* `bb schema:create` - Creates posts and a classes page from index EDN files
 * `bb schema:rebuild` - Rebuilds posts and html from index EDN files for local development
 * `bb quickblog` - Invoke [quickblog](https://github.com/borkdude/quickblog) tasks
 
