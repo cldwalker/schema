@@ -179,8 +179,9 @@
 
 (defn- class-hierarchy
   "Hiccup of nested lists of class `refs`, from the root class e.g. Thing down,
-  like logseq-class-tree's outline. Classes are sorted by title and a class
-  with multiple parents is under each of them."
+  like logseq-class-tree's outline. Classes with subclasses are open <details>
+  so they collapse without js. Classes are sorted by title and a class with
+  multiple parents is under each of them."
   [indexes refs]
   (let [parents (into {} (map (juxt identity #(class-parents indexes %))) refs)
         sort-refs (fn [refs]
@@ -190,13 +191,14 @@
                                          {} parents)
                               sort-refs)
         item (fn item [ref]
-               (let [{:keys [title url external?]} (class-link indexes ref)]
-                 [:li [:a (cond-> {:href url}
-                            external? (assoc :class "external" :target "_blank" :rel "noopener"))
-                       title]
-                  (when-let [child-refs (children ref)]
-                    [:ul (map item child-refs)])]))]
-    [:ul (map item (sort-refs (filter (comp empty? parents) refs)))]))
+               (let [{:keys [title url external?]} (class-link indexes ref)
+                     link [:a (cond-> {:href url}
+                                external? (assoc :class "external" :target "_blank" :rel "noopener"))
+                           title]]
+                 [:li (if-let [child-refs (children ref)]
+                        [:details {:open true} [:summary link] [:ul (map item child-refs)]]
+                        link)]))]
+    [:ul {:class "class-hierarchy"} (map item (sort-refs (filter (comp empty? parents) refs)))]))
 
 (defn- classes-post
   "Post of `class-ks` and every class they extend"
@@ -209,7 +211,7 @@
      :file "classes.md"
      :schema-org-count (get counts :schema-org 0)
      :tagaholic-count (get counts :tagaholic 0)
-     :tree (str (hiccup/html (class-hierarchy indexes refs)))}))
+     :tree (str (hiccup/html {:mode :html} (class-hierarchy indexes refs)))}))
 
 (defn- ->post [indexes type [k entry]]
   (cond-> {:type type

@@ -27,15 +27,15 @@
                                 "<a class=\"external\" target=\"_blank\" rel=\"noopener\" href=\"https://schema.org/Intangible\">Intangible</a> &gt; "
                                 "<a href=\"HumanConcept.html\">HumanConcept</a> &gt; Genre</p>")))
         (is (not (str/includes? (slurp (fs/file dir "posts" "referrerURL.md")) "breadcrumbs"))))
-      (testing "classes post is a preview post that counts and shows the given classes and their ancestors with only schema.org classes external"
+      (testing "classes post is a preview post that counts and shows the given classes and their ancestors with only schema.org classes external and classes with subclasses collapsible"
         (let [classes (slurp (fs/file dir "posts" "classes.md"))]
           (is (str/includes? classes "Preview: true"))
           (is (str/includes? classes "This ontology has 2 schema.org classes and 2 tagaholic.me classes."))
           (is (str/includes? classes
-                             (str "<ul><li><a class=\"external\" href=\"https://schema.org/Thing\" rel=\"noopener\" target=\"_blank\">Thing</a>"
-                                  "<ul><li><a class=\"external\" href=\"https://schema.org/Intangible\" rel=\"noopener\" target=\"_blank\">Intangible</a>"
-                                  "<ul><li><a href=\"HumanConcept.html\">HumanConcept</a>"
-                                  "<ul><li><a href=\"Genre.html\">Genre</a></li></ul></li></ul></li></ul></li></ul>")))))
+                             (str "<ul class=\"class-hierarchy\"><li><details open><summary><a class=\"external\" href=\"https://schema.org/Thing\" rel=\"noopener\" target=\"_blank\">Thing</a></summary>"
+                                  "<ul><li><details open><summary><a class=\"external\" href=\"https://schema.org/Intangible\" rel=\"noopener\" target=\"_blank\">Intangible</a></summary>"
+                                  "<ul><li><details open><summary><a href=\"HumanConcept.html\">HumanConcept</a></summary>"
+                                  "<ul><li><a href=\"Genre.html\">Genre</a></li></ul></details></li></ul></details></li></ul></details></li></ul>")))))
       (testing "property names link to their property in an index"
         (is (str/includes? (slurp genre-file)
                            "<strong><a class=\"external\" target=\"_blank\" rel=\"noopener\" href=\"https://schema.org/sameAs\">sameAs</a></strong>"))
